@@ -1,0 +1,45 @@
+Step 1 - Download the EC2 Instances template					
+Download the 'EC2 Instances' Excel template file. Ensure you download the template each time to include any new template changes.					
+Step 2 - Fill in your input data					
+"Fill the template file downloaded with the input configurations of your choice (Tab: Inputs)  The definitions for each column in the template is provided in the  table below.
+
+You can specify configurations only for EC2 instances or both EC2 instances and EBS volumes.
+You can only enter configurations for upto 1000 rows at once.
+"					
+Input file Column Definitions					
+Column Name	Description	Accepted Values	Example	Required/Optional	Notes
+Group	Define a group to organize your EC2 estimates	"An alphanumeric string.
+Cannot contain '>', '<' and '&'"	Production	Optional	
+Description	Add a description for your estimate	"An alphanumeric string. 
+Cannot contain '>', '<' and '&'"	a1 instance estimate	Optional	
+AWS Region	Choose the region you would like to estimate EC2 prices for	Values available in the dropdown	us-east-1	Required	See EC2 Pricing Calculator for region codes and the associated region names. 
+Operating System	Choose which operating system you'd like to run Amazon EC2 instances on.	Values available in the dropdown	Linux	Required	
+Instance Type	Enter the EC2 instance of your choice	"Free form text in the format 
+<instance_family | instance generation | attribute>.<Instance_size>
+Example:  t4g.xlarge.
+
+No other format will be supported."	a1.medium	Required	"See EC2 Pricing Calculator and EC2 Pricing pages for available EC2 instance names for the 'Region' and 'Operating system' selected.
+"
+Tenancy	Choose the tenancy you'd like to run Amazon EC2 instances on	Values available in the dropdown	Shared Instances	Required	
+Number of Instances	Enter the number of Amazon EC2 instances that you need.	Numerical value	2	Required	Quantity cannot be more than 50000
+Assumed Usage	Enter the expected usage of Amazon EC2 instances. Only applicable when 'Hours/Week' Usage type is selected.	Numerical value	10	Required if Usage Type selected is 'Hours/Week'	Assumed Usage cannot exceed 168
+Usage Type	Select the usage type of your choice based on your workload	Values available in the dropdown	Hours/Week	Required	"When usage type selected is 'Always On', you are not required to input values in the 'Assumed Usage' field.
+
+When usage type selected is 'Hours/Week', enter your expected usage of Amazon EC2 instances in the 'Assumed Usage' field."
+Purchasing Options	Select the pricing option of your choice	Values available in the dropdown	1 Yr No Upfront Compute Savings Plan	Required	
+Storage Type	Choose the EBS volume storage type of your choice	Values available in the dropdown	General Purpose SSD (gp3)	Optional	
+Storage amount per Instance (GB)	Enter your storage amount in GB per instance	Numerical value	12	Optional	"
+Storage amount per volume cannot be more than 16384 GB."
+Provisioning IOPS per instance (gp3, io1, io2)	"Enter the Provisioning IOPS per volume. 
+This is applicable when storage type selected is 
+1) General Purpose SSD (gp3)
+2) Provisioned IOPS SSD (io1) 
+3) Provisioned IOPS SSD (io2)"	Numerical value	1000	Optional	"Provisioning IOPS per volume for General Purpose SSD (gp3) cannot be more than 16000.
+
+Provisioning IOPS per volume for io2 cannot be more than 256000.
+
+Provisioning IOPS per volume for io1 cannot be more than 64000."
+EBS Throughput per Instance	"Enter the throughput per volume in MBps only
+This is applicable when storage type selected is General Purpose SSD (gp3)"	Numerical value	50	Optional	General Purpose SSD (gp3) - Throughput cannot be more than 1000 MBps.
+Snapshot Frequency	Select the Snapshot frequency of your choice	Values available in the dropdown	Daily	Optional	
+EBS Snapshot amount per Instance (GB/snapshot)	Enter the amount changed per snapshot. 	Numerical value	100	Optional	Amount changed per snapshot cannot be more than 16384 GB.
